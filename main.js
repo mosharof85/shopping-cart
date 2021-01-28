@@ -1,4 +1,3 @@
-
 buttonActionHandller('phone-buttons');
 buttonActionHandller('case-buttons');
 updateGrandTotalSection();
@@ -16,12 +15,10 @@ function buttonActionHandller(targetSectionID){
     //targeting related price section
     let itemPrice = selectedGroup.querySelector('.item-price');
 
-
     //storing per unit price on stat-up
     const unitPrice = parseFloat(itemPrice.innerText);
 
     //adding click events on buttons
-
     for (let i=0; i<btns.length; i++){
         btns[i].addEventListener('click', function () {
 
@@ -51,26 +48,27 @@ function buttonActionHandller(targetSectionID){
 }
 
 function updateGrandTotalSection(){
-    //targeting SubTotal Section
+    //targeting ToTal Calculation Section
 
-    let subTotal = document.querySelector('#subTotal');
+    let subTotal = document.getElementById('subTotal');
 
-    //targeting tax Section
+    let tax = document.getElementById('tax');
 
-    let tax = document.querySelector('#tax');
+    let taxRate = document.getElementById('tax-rate');
 
-    //targeting GrandTotal Section
-
-    let grandTotal = document.querySelector('#grandTotal');
+    let grandTotal = document.getElementById('grandTotal');
 
     let currentSubtotal = 0;
-    let currentTax = parseFloat(tax.innerText)
+    let taxRateValue = parseFloat(taxRate.innerText);
 
     document.querySelectorAll('.item-price').forEach(function (item) {
         currentSubtotal  = currentSubtotal + parseInt(item.innerText);
     })
 
+    let currentTax = parseFloat(currentSubtotal * 5/100);
+
     subTotal.innerText = currentSubtotal;
+    tax.innerText = currentTax;
 
     grandTotal.innerText = (currentSubtotal + currentTax);
 }
