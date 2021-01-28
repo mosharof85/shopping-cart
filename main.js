@@ -28,7 +28,7 @@ function buttonActionHandller(targetSectionID){
                 delta = -1;
             }
 
-            let currentCounter = parseInt(itemCounter.value);
+            let currentCounter = parseFloat(itemCounter.value);
 
             if(currentCounter === 0 && delta === -1){
                 return;
@@ -62,7 +62,7 @@ function updateGrandTotalSection(){
     let taxRateValue = parseFloat(taxRate.innerText);
 
     document.querySelectorAll('.item-price').forEach(function (item) {
-        currentSubtotal  = currentSubtotal + parseInt(item.innerText);
+        currentSubtotal  = currentSubtotal + parseFloat(item.innerText);
     })
 
     let currentTax = parseFloat(currentSubtotal * 5/100);
