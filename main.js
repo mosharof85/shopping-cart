@@ -1,6 +1,7 @@
 buttonActionHandller('phone-buttons');
 buttonActionHandller('case-buttons');
 updateGrandTotalSection();
+activatingDeleteButton();
 
 function buttonActionHandller(targetSectionID){
 
@@ -71,4 +72,14 @@ function updateGrandTotalSection(){
     tax.innerText = currentTax;
 
     grandTotal.innerText = (currentSubtotal + currentTax);
+}
+
+function activatingDeleteButton() {
+    document.querySelectorAll('.remove-item').forEach(function (item) {
+        item.addEventListener('click', function () {
+            var targetRow = item.closest('.cart-item');
+            targetRow.parentElement.removeChild(targetRow);
+            updateGrandTotalSection();
+        })
+    })
 }
